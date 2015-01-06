@@ -27,7 +27,23 @@ class ViewController: UIViewController {
     @IBAction func action_convertYears(sender: AnyObject) {
         let yearsString = self.dogYearsTextField.text
         var yearsInt = yearsString.toInt()!;//till yearsString.toInt represents an optional. with "!" we unwrapp it.
-        self.dogYearsLabel.text = "\(yearsInt*7)" + " Human Years"
+        
+        let humanYearWhenDog2:Double = 10.5;
+        let humanYearWhenDogMoreThan2:Double = 4;
+
+        var dogYears:Double = Double(yearsInt);
+        
+        if(yearsInt <= 2)
+        {
+            dogYears *= humanYearWhenDog2
+        }
+        else
+        {
+            dogYears = 2*humanYearWhenDog2 + (dogYears-2)*humanYearWhenDogMoreThan2
+        }
+        
+        
+        self.dogYearsLabel.text = "\(dogYears)" + " Human Years"
         self.dogYearsLabel.hidden = false;
         
         self.dogYearsTextField.resignFirstResponder();
